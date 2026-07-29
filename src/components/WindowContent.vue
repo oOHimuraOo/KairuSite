@@ -7,6 +7,14 @@ const props = defineProps<{
 }>();
 
 const activeTab = ref('cadastro');
+const isMobile = ref(window.innerWidth <= 768);
+
+const updateMobile = () => {
+  isMobile.value = window.innerWidth <= 768;
+};
+
+// Atualiza ao redimensionar
+window.addEventListener('resize', updateMobile);
 
 const submitNewsletter = () => {
   window.alert('Inscrição realizada com sucesso!');
@@ -14,7 +22,8 @@ const submitNewsletter = () => {
 </script>
 
 <template>
-  <div class="info-box visible" id="main-info-box">
+  <!-- Layout Desktop: janela sobreposta com abas -->
+  <div v-if="!isMobile" class="info-box visible" id="main-info-box">
     <div class="tabs-header">
       <button
         :class="['tab-btn', { active: activeTab === 'cadastro' }]"
@@ -32,6 +41,7 @@ const submitNewsletter = () => {
       </button>
     </div>
 
+    <!-- Tab 1: Cadastro -->
     <div
       v-show="activeTab === 'cadastro'"
       class="tab-content active"
@@ -54,6 +64,7 @@ const submitNewsletter = () => {
       </form>
     </div>
 
+    <!-- Tab 2: Devlog -->
     <div v-show="activeTab === 'devlog'" class="tab-content active" role="tabpanel">
       <h1>Diário de Desenvolvimento</h1>
       <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
@@ -63,9 +74,39 @@ const submitNewsletter = () => {
       </div>
     </div>
   </div>
+
+  <!-- Layout Mobile: seções empilhadas (sem abas) -->
+  <div v-else class="mobile-sections">
+    <!-- Seção 1: Cadastro & Sobre -->
+    <section class="mobile-section" id="sobre">
+      <h2>{{ cadastro.title }}</h2>
+      <p v-for="(p, idx) in cadastro.paragraphs" :key="idx">{{ p }}</p>
+      <form class="newsletter-form" @submit.prevent="submitNewsletter">
+        <input
+          type="email"
+          class="newsletter-input"
+          placeholder="Seu melhor e-mail..."
+          required
+          aria-label="Endereço de e-mail"
+        />
+        <button type="submit" class="submit-btn">Inscrever</button>
+      </form>
+    </section>
+
+    <!-- Seção 2: Devlog -->
+    <section class="mobile-section" id="devlog">
+      <h2>Diário de Desenvolvimento</h2>
+      <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
+        <div class="devlog-date">{{ item.date }}</div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
+// ========== Estilos desktop (existente) ==========
 .info-box {
   position: absolute;
   width: 100%;
@@ -222,54 +263,79 @@ p {
   color: var(--secondary-color);
 }
 
-@media (max-width: 768px) {
-  .info-box {
-    max-width: 90vw;
-    max-height: 80vh;
-    width: 90%;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 12px;
-  }
+// ========== Layout Mobile ==========
+.mobile-sections {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-  .tab-content {
-    padding: 20px;
-    max-height: 60vh;
-  }
-
-  .tab-btn {
-    padding: 12px 8px;
-    font-size: 0.9rem;
-  }
-
-  h1 {
+.mobile-section {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  
+  h2 {
     font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: var(--primary-color);
   }
-
+  
+  .devlog-item {
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    
+    .devlog-date {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+  }
+  
   .newsletter-form {
+    display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 15px;
   }
-
-  .submit-btn {
+  
+  .newsletter-input {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--surface-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
     width: 100%;
+  }
+  
+  .submit-btn {
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: var(--btn-text-color, #ffffff);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-speed);
+    width: 100%;
+    
+    &:hover {
+      background: var(--primary-hover);
+    }
   }
 }
 
+// Responsividade dos títulos no mobile
 @media (max-width: 480px) {
-  .tab-btn {
-    font-size: 0.8rem;
-    padding: 10px 6px;
-  }
-
-  .tab-content {
-    padding: 16px;
-  }
-
-  h1 {
-    font-size: 1.4rem;
+  .mobile-section h2 {
+    font-size: 1.5rem;
   }
 }
 </style>

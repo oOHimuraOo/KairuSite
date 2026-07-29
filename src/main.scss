@@ -26,7 +26,6 @@ html[data-theme="light"] {
 
 html[data-reader-mode="soft"] {
   filter: sepia(0.25) saturate(0.9) brightness(1.05);
-  background-color: var(--bg-color);
 }
 
 html[data-font-size="normal"] {
@@ -53,17 +52,11 @@ body {
   overflow: hidden;
 }
 
+/* Classes auxiliares globais */
 .min-h-100 { min-height: 100% !important; }
 .min-w-100 { min-width: 100% !important; }
 
-.carousel-img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  overflow: hidden;
-}
-
+/* Transições */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.6s ease, transform 0.4s ease;
@@ -79,10 +72,10 @@ body {
   transform: translateY(0);
 }
 
+/* Ajuste para mobile: body com overflow auto */
 @media (max-width: 768px) {
-  .carousel-img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+  body {
+    overflow-y: auto;
+    height: auto;
   }
 }

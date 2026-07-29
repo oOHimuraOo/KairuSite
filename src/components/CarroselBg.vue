@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  defineProps<{
-    slides: Array<{ src: string; alt: string }>;
-  }>();
+defineProps<{
+  slides: Array<{ src: string; alt: string }>;
+}>();
 </script>
 
 <template>
   <div id="CaroselBg" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button
-        v-for="(_slide, index) in slides"
+        v-for="(_, index) in slides"
         :key="index"
         type="button"
         data-bs-target="#CaroselBg"
@@ -18,7 +18,7 @@
       ></button>
     </div>
 
-    <div class="carousel-inner min-vw-100 min-vh-100">
+    <div class="carousel-inner">
       <div
         v-for="(slide, index) in slides"
         :key="index"
@@ -41,5 +41,31 @@
 </template>
 
 <style scoped lang="scss">
-/* Estilos específicos do carrossel (opcional, a maior parte já está no main.scss) */
+// O carrossel ocupa a tela inteira em desktop
+#CaroselBg {
+  width: 100vw;
+  height: 100vh;
+  
+  .carousel-inner {
+    height: 100%;
+    
+    .carousel-item {
+      height: 100%;
+    }
+  }
+  
+  // Em mobile: altura reduzida para 40vh
+  @media (max-width: 768px) {
+    height: 40vh;
+    min-height: 300px; // Altura mínima para não ficar muito pequeno
+  }
+}
+
+// A classe .carousel-img já está definida globalmente, mas garantimos:
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 </style>
