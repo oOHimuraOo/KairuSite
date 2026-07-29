@@ -5,7 +5,6 @@ import PulsingLogo from './components/PulsingLogo.vue';
 import ReguaAcessibilidade from './components/ReguaAcessibilidade.vue';
 import WindowContent from './components/WindowContent.vue';
 
-// ========== Estado ==========
 const showIntro = ref(true);
 const introStorageKey = 'kairu-site-intro-last-shown';
 const settingsStorageKey = 'kairu-site-settings';
@@ -18,7 +17,6 @@ const blindMode = ref(false);
 const siteData = ref<any>(null);
 const loading = ref(true);
 
-// ========== Speech Synthesis ==========
 const isSpeechSupported = typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 
 let hoverSpeechTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -66,7 +64,6 @@ const stopSpeech = () => {
   if (isSpeechSupported) speechSynthesis.cancel();
 };
 
-// ========== Aplicar configurações ==========
 const applySettings = () => {
   const root = document.documentElement;
   root.dataset.theme = theme.value;
@@ -87,7 +84,6 @@ const saveSettings = () => {
       }),
     );
   } catch {
-    // ignore
   }
 };
 
@@ -101,11 +97,9 @@ const loadSettings = () => {
     readerMode.value = ['normal', 'soft'].includes(parsed.readerMode) ? parsed.readerMode : 'normal';
     blindMode.value = parsed.blindMode === true;
   } catch {
-    // ignore
   }
 };
 
-// ========== Toggles ==========
 const toggleTheme = () => { theme.value = theme.value === 'dark' ? 'light' : 'dark'; };
 const toggleFontSize = () => {
   fontSize.value =
@@ -122,7 +116,6 @@ const hideIntro = () => {
   showIntro.value = false;
 };
 
-// ========== Ciclo de vida ==========
 onMounted(async () => {
   try {
     const res = await fetch('/site-data.json');
@@ -201,9 +194,7 @@ watch(blindMode, (val) => {
         @toggle-reader="toggleReaderMode"
         @toggle-blind="toggleBlindMode"
       />
-      <!-- Carrossel sempre primeiro -->
       <CarroselBg :slides="siteData.carousel" />
-      <!-- Janela de informações (comportamento variável) -->
       <WindowContent 
         :cadastro="siteData.cadastro" 
         :devlog="siteData.devlog" 
@@ -225,7 +216,6 @@ watch(blindMode, (val) => {
   justify-content: center;
   align-items: center;
   
-  // Mobile: layout em coluna com rolagem
   @media (max-width: 768px) {
     flex-direction: column;
     overflow-y: auto;

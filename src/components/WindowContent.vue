@@ -13,7 +13,6 @@ const updateMobile = () => {
   isMobile.value = window.innerWidth <= 768;
 };
 
-// Atualiza ao redimensionar
 window.addEventListener('resize', updateMobile);
 
 const submitNewsletter = () => {
@@ -22,7 +21,6 @@ const submitNewsletter = () => {
 </script>
 
 <template>
-  <!-- Layout Desktop: janela sobreposta com abas -->
   <div v-if="!isMobile" class="info-box visible" id="main-info-box">
     <div class="tabs-header">
       <button
@@ -41,7 +39,6 @@ const submitNewsletter = () => {
       </button>
     </div>
 
-    <!-- Tab 1: Cadastro -->
     <div
       v-show="activeTab === 'cadastro'"
       class="tab-content active"
@@ -64,7 +61,6 @@ const submitNewsletter = () => {
       </form>
     </div>
 
-    <!-- Tab 2: Devlog -->
     <div v-show="activeTab === 'devlog'" class="tab-content active" role="tabpanel">
       <h1>Diário de Desenvolvimento</h1>
       <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
@@ -75,9 +71,7 @@ const submitNewsletter = () => {
     </div>
   </div>
 
-  <!-- Layout Mobile: seções empilhadas (sem abas) -->
   <div v-else class="mobile-sections">
-    <!-- Seção 1: Cadastro & Sobre -->
     <section class="mobile-section" id="sobre">
       <h2>{{ cadastro.title }}</h2>
       <p v-for="(p, idx) in cadastro.paragraphs" :key="idx">{{ p }}</p>
@@ -93,7 +87,6 @@ const submitNewsletter = () => {
       </form>
     </section>
 
-    <!-- Seção 2: Devlog -->
     <section class="mobile-section" id="devlog">
       <h2>Diário de Desenvolvimento</h2>
       <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
@@ -106,7 +99,6 @@ const submitNewsletter = () => {
 </template>
 
 <style scoped lang="scss">
-// ========== Estilos desktop (existente) ==========
 .info-box {
   position: absolute;
   width: 100%;
@@ -263,7 +255,6 @@ p {
   color: var(--secondary-color);
 }
 
-// ========== Layout Mobile ==========
 .mobile-sections {
   width: 100%;
   max-width: 100%;
@@ -332,7 +323,6 @@ p {
   }
 }
 
-// Responsividade dos títulos no mobile
 @media (max-width: 480px) {
   .mobile-section h2 {
     font-size: 1.5rem;

@@ -41,7 +41,6 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-// O carrossel ocupa a tela inteira em desktop
 #CaroselBg {
   width: 100vw;
   height: 100vh;
@@ -54,14 +53,11 @@ defineProps<{
     }
   }
   
-  // Em mobile: altura reduzida para 40vh
   @media (max-width: 768px) {
-    height: 40vh;
-    min-height: 300px; // Altura mínima para não ficar muito pequeno
+    height: 100vh;
   }
 }
 
-// A classe .carousel-img já está definida globalmente, mas garantimos:
 .carousel-img {
   width: 100%;
   height: 100%;
