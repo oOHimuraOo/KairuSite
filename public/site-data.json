@@ -1,0 +1,26 @@
+{
+    "carousel": [
+        { "src": "https://placehold.co/1601x1401", "alt": "Paisagem mística 1" },
+        { "src": "https://placehold.co/1602x1402", "alt": "Paisagem mística 2" },
+        { "src": "https://placehold.co/1603x1403", "alt": "Paisagem mística 3" }
+    ],
+    "cadastro": {
+        "title": "Kairu-Edé: Batalha Astral",
+        "paragraphs": [
+            "Mergulhe em um RPG tático híbrido que combina ação em tempo real, batalhas em grade tática e construção avançada de baralhos. Desenvolvido com paixão pela nossa equipe independente, o projeto explora planos espirituais e mecânicas profundas de estratégia.",
+            "Cadastre-se na nossa newsletter para receber atualizações exclusivas, acesso antecipado a betas e novidades diretamente da nossa forja de desenvolvimento."
+        ]
+    },
+    "devlog": [
+        {
+            "date": "28 de Julho, 2026",
+            "title": "Implementação do Sistema de Cards Búzios",
+            "description": "Finalizamos a integração inicial das mecânicas de baralho com o grid de movimentação. O balanceamento está mostrando resultados excelentes nos testes locais."
+        },
+        {
+            "date": "15 de Julho, 2026",
+            "title": "Otimização de Performance Gráfica",
+            "description": "Refatoramos os shaders de renderização para garantir transições suaves no carrossel de backgrounds e estabilidade máxima de FPS."
+        }
+    ]
+}
