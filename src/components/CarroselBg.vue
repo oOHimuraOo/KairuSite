@@ -8,7 +8,7 @@
   <div id="CaroselBg" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button
-        v-for="(slide, index) in slides"
+        v-for="(_slide, index) in slides"
         :key="index"
         type="button"
         data-bs-target="#CaroselBg"
