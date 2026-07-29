@@ -40,11 +40,9 @@ const handleAnimationEnd = () => {
   max-width: 45vw;
   max-height: 45vw;
   border-radius: 50%;
-  //background: linear-gradient(135deg, var(--primary-color), #8f80a786);
   display: flex;
   justify-content: center;
   align-items: center;
-  //box-shadow: 0 0 0 0 var(--accent-glow);
   animation: pulse-animation 1.2s ease-in-out 3;
   
   & img {
@@ -57,15 +55,12 @@ const handleAnimationEnd = () => {
 @keyframes pulse-animation {
   0% {
     transform: scale(0.95);
-    //box-shadow: 0 0 0 0 var(--accent-glow);
   }
   70% {
     transform: scale(1.1);
-    //box-shadow: 0 0 0 35px rgba(99, 102, 241, 0);
   }
   100% {
     transform: scale(0.95);
-    //box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
   }
 }
 </style>
