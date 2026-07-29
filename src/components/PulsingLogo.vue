@@ -14,7 +14,7 @@ const handleAnimationEnd = () => {
       class="pulsing-logo"
       @animationend="handleAnimationEnd"
     >
-      <img src="https://placehold.co/380x380" alt="Logo" />
+      <img src="./../assets/imgs/NOVA LOGO 2025 BATALHA ASTRAL.png" alt="Logo" />
     </div>
   </div>
 </template>
@@ -35,16 +35,16 @@ const handleAnimationEnd = () => {
 }
 
 .pulsing-logo {
-  width: 180px;
-  height: 180px;
-  max-width: 180px;
-  max-height: 180px;
+  width: 45vw;
+  height: 45vw;
+  max-width: 45vw;
+  max-height: 45vw;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), #818cf8);
+  //background: linear-gradient(135deg, var(--primary-color), #8f80a786);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 0 0 var(--accent-glow);
+  //box-shadow: 0 0 0 0 var(--accent-glow);
   animation: pulse-animation 1.2s ease-in-out 3;
   
   & img {
@@ -57,15 +57,15 @@ const handleAnimationEnd = () => {
 @keyframes pulse-animation {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 var(--accent-glow);
+    //box-shadow: 0 0 0 0 var(--accent-glow);
   }
   70% {
     transform: scale(1.1);
-    box-shadow: 0 0 0 35px rgba(99, 102, 241, 0);
+    //box-shadow: 0 0 0 35px rgba(99, 102, 241, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    //box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
   }
 }
 </style>
