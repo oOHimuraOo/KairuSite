@@ -65,7 +65,6 @@ defineProps<{
   object-position: center;
 }
 
-/* ===== INDICADORES (bolinhas) ===== */
 .carousel-indicators [data-bs-target] {
   background-color: rgba(255, 255, 255, 0.4);
   border: none;
@@ -81,7 +80,6 @@ defineProps<{
   }
 }
 
-/* Modo escuro: usa cor mais escura para indicadores inativos e ativos */
 [data-theme="dark"] .carousel-indicators [data-bs-target] {
   background-color: rgba(255, 255, 255, 0.25);
   &.active {
@@ -89,7 +87,6 @@ defineProps<{
   }
 }
 
-/* Modo claro: usa cor padrão para indicadores ativos */
 [data-theme="light"] .carousel-indicators [data-bs-target] {
   background-color: rgba(0, 0, 0, 0.2);
   &.active {
@@ -97,52 +94,44 @@ defineProps<{
   }
 }
 
-/* ===== CONTROLES (setas) – com ícones mais espessos ===== */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   opacity: 0.7;
   transition: opacity 0.3s ease;
 
-  /* Aumenta a espessura usando uma máscara com traço mais grosso */
   background-color: var(--primary-color, #BA5710);
   mask-size: 100% 100%;
   -webkit-mask-size: 100% 100%;
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
 
-  /* Ícones com traço mais grosso (modificamos o SVG para path com stroke-width maior) */
   mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BA5710' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M15 18l-6-6 6-6'/%3e%3c/svg%3e");
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BA5710' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M15 18l-6-6 6-6'/%3e%3c/svg%3e");
 }
 
-/* Ícone da seta para a direita (espelhado) */
 .carousel-control-next-icon {
   mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BA5710' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M9 18l6-6-6-6'/%3e%3c/svg%3e");
   -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BA5710' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M9 18l6-6-6-6'/%3e%3c/svg%3e");
 }
 
-/* Modo escuro: usa a cor mais escura */
 [data-theme="dark"] .carousel-control-prev-icon,
 [data-theme="dark"] .carousel-control-next-icon {
   background-color: var(--primary-dark, #6C3209);
   opacity: 0.6;
 }
 
-/* Modo claro: usa a cor padrão */
 [data-theme="light"] .carousel-control-prev-icon,
 [data-theme="light"] .carousel-control-next-icon {
   background-color: var(--primary-color, #BA5710);
   opacity: 0.5;
 }
 
-/* Hover: aumenta a opacidade em ambos os modos */
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
   opacity: 1;
 }
 
-/* Modo leitura: mantém a cor padrão com opacidade média */
 [data-reader-mode="soft"] .carousel-control-prev-icon,
 [data-reader-mode="soft"] .carousel-control-next-icon {
   background-color: var(--primary-color, #BA5710);

@@ -120,7 +120,6 @@ const submitNewsletter = async () => {
 
 <template>
   <div v-if="!isMobile" class="info-box visible" id="main-info-box">
-    <!-- Abas -->
     <div class="tabs-header">
       <button
         v-for="(tab, index) in tabs"
@@ -141,12 +140,10 @@ const submitNewsletter = async () => {
     </div>
 
     <div class="pasta-content">
-      <!-- ===== ABA CADASTRO ===== -->
       <div v-if="activeTab === 'cadastro'" class="tab-content active special" role="tabpanel">
         <div class="tab-text-content">
           <h1>{{ cadastro.title }}</h1>
           <template v-for="(block, idx) in cadastro.content" :key="idx">
-            <!-- Substituímos os headings por divs com classes -->
             <div v-if="block.type === 'heading' && block.level === 1" v-html="renderInline(block.text || '')" class="heading-level-1"></div>
             <div v-else-if="block.type === 'heading' && block.level === 2" v-html="renderInline(block.text || '')" class="heading-level-2"></div>
             <div v-else-if="block.type === 'heading' && block.level === 3" v-html="renderInline(block.text || '')" class="heading-level-3"></div>
@@ -184,7 +181,6 @@ const submitNewsletter = async () => {
         </div>
       </div>
 
-      <!-- ===== ABA SOBRE O JOGO ===== -->
       <div v-if="activeTab === 'sobreJogo'" class="tab-content active" role="tabpanel">
         <div v-if="sobreJogo">
           <h1>{{ sobreJogo.title }}</h1>
@@ -210,7 +206,6 @@ const submitNewsletter = async () => {
         </div>
       </div>
 
-      <!-- ===== ABA SOBRE A EQUIPE ===== -->
       <div v-if="activeTab === 'sobreEquipe'" class="tab-content active" role="tabpanel">
         <div v-if="sobreEquipe">
           <h1>{{ sobreEquipe.title }}</h1>
@@ -236,7 +231,6 @@ const submitNewsletter = async () => {
         </div>
       </div>
 
-      <!-- ===== ABA DEVLOG ===== -->
       <div v-if="activeTab === 'devlog'" class="tab-content active" role="tabpanel">
         <h1>Diário de Desenvolvimento</h1>
         <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
@@ -251,9 +245,7 @@ const submitNewsletter = async () => {
     </div>
   </div>
 
-  <!-- ===== VERSÃO MOBILE ===== -->
   <div v-else class="mobile-sections">
-    <!-- Cadastro -->
     <section class="mobile-section" id="cadastro">
       <h2>{{ cadastro.title }}</h2>
       <template v-for="(block, idx) in cadastro.content" :key="idx">
@@ -291,7 +283,6 @@ const submitNewsletter = async () => {
       </p>
     </section>
 
-    <!-- Sobre o Jogo -->
     <section v-if="sobreJogo" class="mobile-section" id="sobreJogo">
       <h2>{{ sobreJogo.title }}</h2>
       <template v-for="(block, idx) in sobreJogo.content" :key="idx">
@@ -312,7 +303,6 @@ const submitNewsletter = async () => {
       </template>
     </section>
 
-    <!-- Sobre a Equipe -->
     <section v-if="sobreEquipe" class="mobile-section" id="sobreEquipe">
       <h2>{{ sobreEquipe.title }}</h2>
       <template v-for="(block, idx) in sobreEquipe.content" :key="idx">
@@ -333,7 +323,6 @@ const submitNewsletter = async () => {
       </template>
     </section>
 
-    <!-- Devlog -->
     <section class="mobile-section" id="devlog">
       <h2>Diário de Desenvolvimento</h2>
       <div v-for="(item, idx) in devlog" :key="idx" class="devlog-item">
@@ -349,7 +338,6 @@ const submitNewsletter = async () => {
 </template>
 
 <style scoped lang="scss">
-/* ===== ESTILOS GERAIS ===== */
 .info-box {
   position: absolute;
   width: 100%;
@@ -374,7 +362,6 @@ const submitNewsletter = async () => {
   }
 }
 
-/* ===== ABAS ===== */
 .tabs-header {
   display: flex;
   position: relative;
@@ -449,12 +436,12 @@ const submitNewsletter = async () => {
   &.active + .tab-btn:not(.active) {
     box-shadow: -4px 0 8px -4px rgba(0, 0, 0, 0.15);
   }
+  
   .tab-btn:has(+ .active) {
     box-shadow: 4px 0 8px -4px rgba(0, 0, 0, 0.15);
   }
 }
 
-/* ===== CORPO DA PASTA ===== */
 .pasta-content {
   background: var(--surface-color);
   border: 1px solid var(--surface-border);
@@ -472,8 +459,14 @@ const submitNewsletter = async () => {
   scrollbar-width: thin;
   scrollbar-color: var(--surface-border) transparent;
 
-  &::-webkit-scrollbar { width: 6px; }
-  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar { 
+    width: 6px; 
+  }
+  
+  &::-webkit-scrollbar-track { 
+    background: transparent; 
+  }
+  
   &::-webkit-scrollbar-thumb {
     background: var(--surface-border);
     border-radius: 4px;
@@ -507,7 +500,6 @@ const submitNewsletter = async () => {
   }
 }
 
-/* ===== ESTILOS DOS HEADINGS (agora em divs) ===== */
 .heading-level-1 {
   font-size: 2.5rem;
   font-family: 'Permanent Marker', cursive;
@@ -515,6 +507,7 @@ const submitNewsletter = async () => {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .heading-level-2 {
   font-size: 2rem;
   font-family: 'Permanent Marker', cursive;
@@ -522,6 +515,7 @@ const submitNewsletter = async () => {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .heading-level-3 {
   font-size: 1.5rem;
   font-family: 'Permanent Marker', cursive;
@@ -529,6 +523,7 @@ const submitNewsletter = async () => {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .heading-level-4 {
   font-size: 1.2rem;
   font-family: 'Permanent Marker', cursive;
@@ -536,6 +531,7 @@ const submitNewsletter = async () => {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .heading-level-5 {
   font-size: 1rem;
   font-family: 'Permanent Marker', cursive;
@@ -543,6 +539,7 @@ const submitNewsletter = async () => {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .heading-level-6 {
   font-size: 0.9rem;
   font-family: 'Permanent Marker', cursive;
@@ -565,6 +562,7 @@ p {
 ul, ol {
   padding-left: 1.5rem;
   margin-bottom: 1rem;
+
   li {
     margin-bottom: 0.3rem;
     color: var(--secondary-color) !important;
@@ -575,10 +573,15 @@ ul, ol {
 a {
   color: var(--primary-color);
   text-decoration: underline;
-  &:hover { opacity: 0.8; }
+
+  &:hover { 
+    opacity: 0.8; 
+  }
 }
 
-strong { font-weight: 700; }
+strong { 
+  font-weight: 700; 
+}
 
 hr {
   border: none;
@@ -586,7 +589,6 @@ hr {
   margin: 1.5rem 0;
 }
 
-/* ===== DEVLOG ===== */
 .devlog-item {
   margin-bottom: 30px;
   color: var(--secondary-color);
@@ -597,19 +599,23 @@ hr {
     margin-bottom: 4px;
     font-family: 'Share Tech Mono', monospace;
   }
+
   h2 {
     font-size: 1.8rem;
     margin: 8px 0 12px 0;
     font-family: 'Permanent Marker', cursive;
   }
+
   .devlog-description {
     margin-bottom: 12px;
+
     h4 {
       font-size: 1.2rem;
       font-weight: 600;
       margin: 12px 0 4px 0;
       font-family: 'Google Sans Code', monospace;
     }
+
     p {
       margin: 4px 0 0 0;
       line-height: 1.6;
@@ -620,13 +626,13 @@ hr {
   }
 }
 
-/* ===== FORMULÁRIO ===== */
 .newsletter-form {
   display: flex;
   gap: 10px;
   margin-top: 15px;
   width: 100%;
 }
+
 .newsletter-input {
   flex: 1;
   padding: 10px 14px;
@@ -634,6 +640,7 @@ hr {
   border: 1px solid var(--surface-border);
   background: rgba(255, 255, 255, 0.07);
 }
+
 .submit-btn {
   padding: 10px 20px;
   background: var(--primary-color);
@@ -644,7 +651,10 @@ hr {
   cursor: pointer;
   transition: background var(--transition-speed), opacity 0.3s;
 
-  &:hover:not(:disabled) { background: var(--primary-hover); }
+  &:hover:not(:disabled) { 
+    background: var(--primary-hover); 
+  }
+
   &:disabled {
     background: var(--surface-border);
     color: var(--text-color);
@@ -653,15 +663,21 @@ hr {
     pointer-events: none;
   }
 }
+
 .feedback-message {
   margin-top: 10px;
   font-size: 0.95rem;
   font-weight: 600;
-  &.success { color: #16a34a; }
-  &.error { color: #dc2626; }
+
+  &.success { 
+  color: #16a34a; 
+  }
+
+  &.error { 
+    color: #dc2626; 
+    }
 }
 
-/* ===== MOBILE ===== */
 .mobile-sections {
   width: 100%;
   max-width: 100%;
@@ -671,6 +687,7 @@ hr {
   flex-direction: column;
   gap: 30px;
 }
+
 .mobile-section {
   background: var(--surface-color);
   border: 1px solid var(--surface-border);
@@ -684,31 +701,38 @@ hr {
     margin-bottom: 16px;
     font-family: 'Permanent Marker', cursive;
   }
+
   h3 {
     font-size: 1.4rem;
     margin-bottom: 8px;
     font-family: 'Permanent Marker', cursive;
   }
+
   .devlog-item {
     margin-bottom: 30px;
+
     .devlog-date {
       font-size: 0.85rem;
       opacity: 0.7;
       margin-bottom: 4px;
       font-family: 'Share Tech Mono', monospace;
     }
+
     h3 {
       font-size: 1.4rem;
       margin: 8px 0 12px 0;
     }
+
     .devlog-description {
       margin-bottom: 12px;
+
       h5 {
         font-size: 1.1rem;
         font-weight: 600;
         margin: 12px 0 4px 0;
         font-family: 'Google Sans Code', monospace;
       }
+
       p {
         margin: 4px 0 0 0;
         line-height: 1.6;
@@ -724,6 +748,7 @@ hr {
     gap: 10px;
     margin-top: 15px;
   }
+
   .newsletter-input {
     padding: 12px 14px;
     border-radius: 8px;
@@ -731,10 +756,14 @@ hr {
     background: rgba(255, 255, 255, 0.05);
     width: 100%;
   }
+
   .submit-btn {
     background: var(--primary-color);
     transition: background var(--transition-speed), opacity 0.3s;
-    &:hover:not(:disabled) { background: var(--primary-hover); }
+    &:hover:not(:disabled) { 
+      background: var(--primary-hover); 
+    }
+    
     &:disabled {
       background: var(--btn-bg-disabled);
       opacity: 0.7;

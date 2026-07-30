@@ -1,53 +1,27 @@
-/* ============================================================
-   FONTES – Já carregadas via index.html
-   ============================================================ */
-
-/* 
-   As fontes estão definidas nos links do index.html:
-   - Permanent Marker (títulos)
-   - Google Sans Code (devlog)
-   - Share Tech Mono (corpo geral)
-   - Anta (não utilizada, mas disponível)
-*/
-
-/* ============================================================
-   VARIÁVEIS GLOBAIS
-   ============================================================ */
-
 :root {
-  /* Cor principal e variações */
   --primary-color: #BA5710;
   --primary-hover: #96460D;
   --primary-light: #F2A269;
   --primary-dark: #6C3209;
 
-  /* Fundo e superfície - modo escuro (padrão) */
   --bg-color: #170B02;
   --surface-color: rgba(43, 22, 10, 0.92);
   --surface-color-hover: rgba(108, 50, 9, 0.75);
   --surface-border: rgba(186, 87, 16, 0.35);
 
-  /* Texto - modo escuro */
   --text-color: #FCEFE8;
   --text-color-dark: #F8E0D2;
   --secondary-color: #E2A27C;
 
-  /* Botões */
   --btn-text-color: #FFFFFF;
   --btn-bg-disabled: #532A10;
   --btn-text-disabled: #E2A27C;
 
-  /* Acessórios */
   --accent-glow: rgba(186, 87, 16, 0.4);
 
-  /* Tamanho base */
   --font-size-base: 1rem;
   --transition-speed: 0.3s;
 }
-
-/* ============================================================
-   MODO CLARO
-   ============================================================ */
 
 html[data-theme="light"] {
   --bg-color: #FDF0E8;
@@ -66,17 +40,9 @@ html[data-theme="light"] {
   --accent-glow: rgba(186, 87, 16, 0.25);
 }
 
-/* ============================================================
-   MODO LEITURA (SOFT)
-   ============================================================ */
-
 html[data-reader-mode="soft"] {
   filter: sepia(0.25) saturate(0.9) brightness(1.05);
 }
-
-/* ============================================================
-   TAMANHOS DE FONTE
-   ============================================================ */
 
 html[data-font-size="normal"] {
   --font-size-base: 1rem;
@@ -87,10 +53,6 @@ html[data-font-size="large"] {
 html[data-font-size="xlarge"] {
   --font-size-base: 1.2rem;
 }
-
-/* ============================================================
-   APLICAÇÃO GLOBAL
-   ============================================================ */
 
 html {
   font-size: var(--font-size-base);
@@ -108,37 +70,21 @@ body {
   overflow: hidden;
 }
 
-/* ============================================================
-   TÍTULOS – Permanent Marker
-   ============================================================ */
-
 h1, h2 {
   font-family: 'Permanent Marker', cursive;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
-/* ============================================================
-   SUBTÍTULOS E DEMAIS TÍTULOS – Share Tech Mono
-   ============================================================ */
-
 h3, h4, h5, h6 {
   font-family: 'Share Tech Mono', monospace;
   font-weight: 600;
 }
 
-/* ============================================================
-   TEXTO CORRIDO – Share Tech Mono
-   ============================================================ */
-
 p, li, .tab-content, .newsletter-input, .submit-btn, .feedback-message, .tab-btn, .control-btn, .devlog-date, .carousel-indicators button {
   font-family: 'Share Tech Mono', monospace;
   line-height: 1.6;
 }
-
-/* ============================================================
-   DEVLOG – Google Sans Code
-   ============================================================ */
 
 .devlog-item {
   .devlog-date {
@@ -172,35 +118,25 @@ p, li, .tab-content, .newsletter-input, .submit-btn, .feedback-message, .tab-btn
   }
 }
 
-/* ============================================================
-   UTILITÁRIOS
-   ============================================================ */
-
 .min-h-100 { min-height: 100% !important; }
 .min-w-100 { min-width: 100% !important; }
-
-/* ============================================================
-   ANIMAÇÕES
-   ============================================================ */
 
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.6s ease, transform 0.4s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
   transform: translateY(15px);
 }
+
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
 
 @media (max-width: 768px) {
   body {

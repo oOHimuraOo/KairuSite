@@ -6,7 +6,7 @@ const props = defineProps<{
   fontSize: 'normal' | 'large' | 'xlarge';
   readerMode: 'normal' | 'soft';
   blindMode: boolean;
-  hideContent: boolean; // NOVO
+  hideContent: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -14,7 +14,7 @@ const emit = defineEmits<{
   (e: 'toggle-font'): void;
   (e: 'toggle-reader'): void;
   (e: 'toggle-blind'): void;
-  (e: 'toggle-content'): void; // NOVO
+  (e: 'toggle-content'): void;
 }>();
 
 const themeIcon = computed(() => (props.theme === 'dark' ? 'bi-brightness-high-fill' : 'bi-moon-stars-fill'));
@@ -79,7 +79,6 @@ const contentTitle = computed(() => (props.hideContent ? 'Mostrar conteúdo' : '
       <span class="visually-hidden">{{ blindTitle }}</span>
     </button>
 
-    <!-- NOVO BOTÃO: esconder/mostrar conteúdo da janela -->
     <button
       class="control-btn"
       id="content-toggle"
@@ -136,16 +135,19 @@ const contentTitle = computed(() => (props.hideContent ? 'Mostrar conteúdo' : '
     flex-wrap: wrap;
     justify-content: flex-end;
   }
+
   .control-btn {
     padding: 8px 10px;
     font-size: 0.9rem;
   }
 }
+
 @media (max-width: 480px) {
   .control-btn {
     padding: 6px 8px;
     font-size: 0.8rem;
   }
+
   .control-btn h5 {
     font-size: 1rem;
   }

@@ -1,8 +1,12 @@
 {
   "carousel": [
     { "src": "/assets/imgs/LacerdaCompleto.png", "alt": "Ilustração feita por Darwiz Bagdeve do elevador Lacerda em Soteropolis. A cidade distopica onde se passa a historia de Kairu-Edé: batalha astral." },
-    { "src": "https://placehold.co/1602x1402", "alt": "Paisagem mística 2" },
-    { "src": "https://placehold.co/1603x1403", "alt": "Paisagem mística 3" }
+    { "src": "/assets/imgs/AJOGUNSMARIOW.png", "alt": "Paisagem mística 2" },
+    { "src": "/assets/imgs/ARTE.png", "alt": "Paisagem mística 2" },
+    { "src": "/assets/imgs/ARTE3.png", "alt": "Paisagem mística 2" },
+    { "src": "/assets/imgs/CULTURAMAAGOSTO.png", "alt": "Paisagem mística 2" },
+    { "src": "/assets/imgs/KAIRUITAPARICA.png", "alt": "Paisagem mística 2" },
+    { "src": "/assets/imgs/REF_KairuLocciLocci2.png", "alt": "Paisagem mística 2" }
   ],
   "cadastro": {
     "title": "Kairu-Edé: Batalha Astral",
