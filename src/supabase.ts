@@ -1,9 +1,30 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL ?? import.meta.env.NEXT_PUBLIC_SUPABASE_URL)?.trim();
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY ?? import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)?.trim();
-const siteAuthEmail = import.meta.env.VITE_SUPABASE_AUTH_EMAIL?.trim();
-const siteAuthPassword = import.meta.env.VITE_SUPABASE_AUTH_PASSWORD?.trim();
+// ============================================================
+// LEITURA DAS VARIÁVEIS DE AMBIENTE
+// ============================================================
+
+// Usa VITE_ (para Vite) e fallback para process.env (para Node/outros)
+const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL)?.trim();
+const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY)?.trim();
+const siteAuthEmail = (import.meta.env.VITE_SUPABASE_AUTH_EMAIL || process.env.VITE_SUPABASE_AUTH_EMAIL)?.trim();
+const siteAuthPassword = (import.meta.env.VITE_SUPABASE_AUTH_PASSWORD || process.env.VITE_SUPABASE_AUTH_PASSWORD)?.trim();
+
+// ============================================================
+// LOG DE DEPURAÇÃO (apenas em desenvolvimento)
+// ============================================================
+
+if (import.meta.env.DEV) {
+  console.log('🔍 [Supabase] URL:', supabaseUrl);
+  console.log('🔍 [Supabase] Anon Key:', supabaseAnonKey ? '✅ definida' : '❌ não definida');
+  console.log('🔍 [Supabase] Auth Email:', siteAuthEmail ? '✅ definido' : '❌ não definido');
+  console.log('🔍 [Supabase] Auth Password:', siteAuthPassword ? '✅ definido' : '❌ não definido');
+}
+
+// ============================================================
+// INSTANCIAÇÃO DO CLIENTE SUPABASE
+// ============================================================
+
 const isConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
 export const supabase = isConfigured
@@ -20,10 +41,18 @@ export const supabase = isConfigured
 
 export const isSupabaseConfigured = isConfigured;
 
+// ============================================================
+// VALIDAÇÃO DE E-MAIL
+// ============================================================
+
 const isValidEmail = (value: string) => {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(value);
 };
+
+// ============================================================
+// TRATAMENTO DE ERROS AMIGÁVEL
+// ============================================================
 
 export const getFriendlySubscriptionError = (error: unknown) => {
   if (!error) {
@@ -89,6 +118,10 @@ export const getFriendlySubscriptionError = (error: unknown) => {
   return 'Não foi possível concluir o cadastro no momento. Tente novamente mais tarde.';
 };
 
+// ============================================================
+// FUNÇÃO PARA INSERIR E-MAIL NA NEWSLETTER
+// ============================================================
+
 export const insertMailSubscription = async (email: string) => {
   if (!supabase) {
     throw new Error('Supabase não configurado.');
@@ -103,6 +136,7 @@ export const insertMailSubscription = async (email: string) => {
     throw new Error('Falha de autenticação com o servidor.');
   }
 
+  // Autentica com e-mail e senha do serviço (usuário de backend)
   const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
     email: siteAuthEmail,
     password: siteAuthPassword,
@@ -116,6 +150,7 @@ export const insertMailSubscription = async (email: string) => {
     throw new Error('Falha de autenticação com o servidor.');
   }
 
+  // Insere o e-mail na tabela 'Mails'
   const { error } = await supabase.from('Mails').insert([{ Mail: trimmedEmail }]);
 
   if (error) {

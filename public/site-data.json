@@ -1,12 +1,12 @@
 {
   "carousel": [
     { "src": "/assets/imgs/LacerdaCompleto.png", "alt": "Ilustração feita por Darwiz Bagdeve do elevador Lacerda em Soteropolis. A cidade distopica onde se passa a historia de Kairu-Edé: batalha astral." },
-    { "src": "/assets/imgs/AJOGUNSMARIOW.png", "alt": "Paisagem mística 2" },
-    { "src": "/assets/imgs/ARTE.png", "alt": "Paisagem mística 2" },
-    { "src": "/assets/imgs/ARTE3.png", "alt": "Paisagem mística 2" },
-    { "src": "/assets/imgs/CULTURAMAAGOSTO.png", "alt": "Paisagem mística 2" },
-    { "src": "/assets/imgs/KAIRUITAPARICA.png", "alt": "Paisagem mística 2" },
-    { "src": "/assets/imgs/REF_KairuLocciLocci2.png", "alt": "Paisagem mística 2" }
+    { "src": "/assets/imgs/AJOGUNSMARIOW.png", "alt": "Ilustração de um Ajogun feita por Darwiz Bagdeve" },
+    { "src": "/assets/imgs/ARTE.png", "alt": "Ilustração feita por Darwiz Bagdeve" },
+    { "src": "/assets/imgs/ARTE3.png", "alt": "Ilustração feita por Darwiz Bagdeve" },
+    { "src": "/assets/imgs/CULTURAMAAGOSTO.png", "alt": "Ilustração promocional de Kairu Edé feita por Darwiz Bagdeve para o evento Culturama de Agosto" },
+    { "src": "/assets/imgs/KAIRUITAPARICA.png", "alt": "Ilustração promocional de Kairu Edé feita por Darwiz Bagdeve para um evento realizado em Itaparica" },
+    { "src": "/assets/imgs/REF_KairuLocciLocci2.png", "alt": "Ilustração feita por Darwiz Bagdeve" }
   ],
   "cadastro": {
     "title": "Kairu-Edé: Batalha Astral",
@@ -49,10 +49,10 @@
         "1 sonoplasta"
       ] },
       { "type": "paragraph", "text": "Grandinha, né? Pois é, estamos focados em criar o melhor jogo possível pra você, com o universo rico de Kairu e uma galera dedicada a fazer tudo dar certo." },
-      { "type": "heading", "level": 3, "text": "Artistas: Darwiz Bagdeve e Atmo Cubo" },
+      { "type": "heading", "level": 3, "text": "Artistas: Darwiz Bagdeve e Filipe Atmo Sant'Ana" },
       { "type": "list", "ordered": false, "items": [
         "Darwiz é o dono da marca e idealizador do projeto.",
-        "Atmo Cubo tem carreira longa em direção de arte e já trabalhou em jogos como **Grapixo**."
+        "Atmo tem carreira longa em direção de arte e já trabalhou em jogos como **Grapixo**."
       ] },
       { "type": "heading", "level": 3, "text": "Produtoras: Fabiola Aquino e Renata Almeida" },
       { "type": "list", "ordered": false, "items": [
@@ -70,7 +70,7 @@
         "Sócio da **Akyoma**, listada pelo Gamepolitan como uma das principais empresas do ramo no estado da Bahia.",
         "Quer dar uma olhada na lista? segue o link [Gamepolitan](https://gamepolitan.com.br/2026/07/22/produtores-de-jogos-na-bahia/)"
       ] },
-      { "type": "heading", "level": 3, "text": "Desenvolvedores: Felipe Cerqueira (eu) e Rodrigo Almeida" },
+      { "type": "heading", "level": 3, "text": "Desenvolvedores: Felipe Cerqueira (eu) e Rodrigo Moreira" },
       { "type": "list", "ordered": false, "items": [
         "Rodrigo já tem experiência em game dev e participou de um projeto infantil lançado por um influencer brasileiro.",
         "Eu, Felipe, venho da área de software (APIs, sites, etc.) e como dev de jogos já participei de várias **TriJam** (3h pra criar um jogo completo!). Confere lá no [Itch.io.](https://trijam.itch.io/)"
