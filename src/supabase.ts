@@ -1,14 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
 // ============================================================
-// LEITURA DAS VARIÁVEIS DE AMBIENTE
+// LEITURA DAS VARIÁVEIS DE AMBIENTE (APENAS import.meta.env)
 // ============================================================
 
-// Usa VITE_ (para Vite) e fallback para process.env (para Node/outros)
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL)?.trim();
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY)?.trim();
-const siteAuthEmail = (import.meta.env.VITE_SUPABASE_AUTH_EMAIL || process.env.VITE_SUPABASE_AUTH_EMAIL)?.trim();
-const siteAuthPassword = (import.meta.env.VITE_SUPABASE_AUTH_PASSWORD || process.env.VITE_SUPABASE_AUTH_PASSWORD)?.trim();
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim();
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim();
+const siteAuthEmail = import.meta.env.VITE_SUPABASE_AUTH_EMAIL?.trim();
+const siteAuthPassword = import.meta.env.VITE_SUPABASE_AUTH_PASSWORD?.trim();
 
 // ============================================================
 // LOG DE DEPURAÇÃO (apenas em desenvolvimento)
