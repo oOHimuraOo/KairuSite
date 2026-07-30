@@ -6,6 +6,7 @@ const props = defineProps<{
   fontSize: 'normal' | 'large' | 'xlarge';
   readerMode: 'normal' | 'soft';
   blindMode: boolean;
+  hideContent: boolean; // NOVO
 }>();
 
 const emit = defineEmits<{
@@ -13,6 +14,7 @@ const emit = defineEmits<{
   (e: 'toggle-font'): void;
   (e: 'toggle-reader'): void;
   (e: 'toggle-blind'): void;
+  (e: 'toggle-content'): void; // NOVO
 }>();
 
 const themeIcon = computed(() => (props.theme === 'dark' ? 'bi-brightness-high-fill' : 'bi-moon-stars-fill'));
@@ -26,6 +28,9 @@ const readerTitle = computed(() => (props.readerMode === 'normal' ? 'Ativar modo
 
 const blindIcon = computed(() => (props.blindMode ? 'bi-mic' : 'bi-mic-mute'));
 const blindTitle = computed(() => (props.blindMode ? 'Desativar Leitor Dinâmico' : 'Ativar Leitor Dinâmico (leitura por foco e seleção)'));
+
+const contentIcon = computed(() => (props.hideContent ? 'bi-journal-x' : 'bi-journal-check'));
+const contentTitle = computed(() => (props.hideContent ? 'Mostrar conteúdo' : 'Esconder conteúdo'));
 </script>
 
 <template>
@@ -72,6 +77,18 @@ const blindTitle = computed(() => (props.blindMode ? 'Desativar Leitor Dinâmico
     >
       <i :class="['bi', blindIcon]" aria-hidden="true"></i>
       <span class="visually-hidden">{{ blindTitle }}</span>
+    </button>
+
+    <!-- NOVO BOTÃO: esconder/mostrar conteúdo da janela -->
+    <button
+      class="control-btn"
+      id="content-toggle"
+      :title="contentTitle"
+      @click="emit('toggle-content')"
+      :aria-pressed="props.hideContent"
+    >
+      <i :class="['bi', contentIcon]" aria-hidden="true"></i>
+      <span class="visually-hidden">{{ contentTitle }}</span>
     </button>
   </div>
 </template>

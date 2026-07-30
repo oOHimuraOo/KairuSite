@@ -1,26 +1,123 @@
 {
-    "carousel": [
-        { "src": "https://placehold.co/1601x1401", "alt": "Paisagem mística 1" },
-        { "src": "https://placehold.co/1602x1402", "alt": "Paisagem mística 2" },
-        { "src": "https://placehold.co/1603x1403", "alt": "Paisagem mística 3" }
-    ],
-    "cadastro": {
-        "title": "Kairu-Edé: Batalha Astral",
-        "paragraphs": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-        ]
-    },
-    "devlog": [
-        {
-            "date": "28 de Julho, 2026",
-            "title": "1914 translation by H. Rackham",
-            "description": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
-        },
-        {
-            "date": "15 de Julho, 2026",
-            "title": "Section 1.10.33 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC",
-            "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
-        }
+  "carousel": [
+    { "src": "/assets/imgs/LacerdaCompleto.png", "alt": "Ilustração feita por Darwiz Bagdeve do elevador Lacerda em Soteropolis. A cidade distopica onde se passa a historia de Kairu-Edé: batalha astral." },
+    { "src": "https://placehold.co/1602x1402", "alt": "Paisagem mística 2" },
+    { "src": "https://placehold.co/1603x1403", "alt": "Paisagem mística 3" }
+  ],
+  "cadastro": {
+    "title": "Kairu-Edé: Batalha Astral",
+    "content": [
+      { "type": "paragraph", "text": "Olá! Você foi convidado para participar da nossa rede de comunicação!" },
+      { "type": "paragraph", "text": "Relaxa, a gente não vai te entupir de e-mails nem ficar insistindo em coisas que você não quer. Mas, se você chegou até aqui, é porque está curioso sobre o projeto, né?" },
+      { "type": "paragraph", "text": "Então, através desse sistema, vamos te mandar e-mails mensais com atualizações sobre o nosso progresso." },
+      { "type": "paragraph", "text": "Quem se inscrever vai ter acesso ao nosso Discord (quando estiver disponível), receber novidades direto da fonte e até pode ser chamado para participar do nosso time de testes." },
+      { "type": "paragraph", "text": "Se tudo isso te chamou a atenção, coloca seu e-mail aqui embaixo e deixa o resto com a gente." },
+      { "type": "paragraph", "text": "— **Soterobean Criativa**" }
     ]
+  },
+  "sobreJogo": {
+    "title": "Sobre o Jogo",
+    "content": [
+      { "type": "paragraph", "text": "Tá curioso sobre o jogo? Claro que tá!" },
+      { "type": "paragraph", "text": "Ainda não posso revelar tudo, mas aqui vai o básico:" },
+      { "type": "paragraph", "text": "**Kairu-Edé: Batalha Astral** é um RPG de turnos com ações em tempo real, misturando elementos de jogos de cartas e interatividade." },
+      { "type": "paragraph", "text": "Se você já jogou **Megaman Battle Network** ou **Boktai: O Sol em Suas Mãos**, já tem uma ideia do caminho que estamos seguindo." },
+      { "type": "heading", "level": 3, "text": "Cenário" },
+      { "type": "list", "ordered": false, "items": [
+        "Se passa em **Soterópolis**, uma cidade inspirada em Salvador, num mundo distópico afro-futurista.",
+        "O Brasil foi dividido em duas nações: uma virou colônia das Nações Unidas, a outra luta para manter a sua independência.",
+        "No meio dessa treta, você joga como **Kairu**, um jovem que descobre poder fazer projeções astrais e percebe como o plano astral (**Ayê**) influencia o plano mundano (**Orum**)."
+      ] },
+      { "type": "paragraph", "text": "Fica ligado, porque vem coisa grande por aí!" }
+    ]
+  },
+  "sobreEquipe": {
+    "title": "Sobre a Equipe",
+    "content": [
+      { "type": "paragraph", "text": "E aí, pessoal! Tudo na tranquilidade? Espero que sim!" },
+      { "type": "paragraph", "text": "Nós somos a **Soterobean Criativa**, uma equipe que juntou criatividade e vontade pra desenvolver o jogo **Kairu-Edé: Batalha Astral**." },
+      { "type": "paragraph", "text": "Atualmente somos:" },
+      { "type": "list", "ordered": false, "items": [
+        "2 artistas",
+        "2 produtoras",
+        "2 desenvolvedores",
+        "1 game designer",
+        "1 sonoplasta"
+      ] },
+      { "type": "paragraph", "text": "Grandinha, né? Pois é, estamos focados em criar o melhor jogo possível pra você, com o universo rico de Kairu e uma galera dedicada a fazer tudo dar certo." },
+      { "type": "heading", "level": 3, "text": "Artistas: Darwiz Bagdeve e Atmo Cubo" },
+      { "type": "list", "ordered": false, "items": [
+        "Darwiz é o dono da marca e idealizador do projeto.",
+        "Atmo Cubo tem carreira longa em direção de arte e já trabalhou em jogos como **Grapixo**."
+      ] },
+      { "type": "heading", "level": 3, "text": "Produtoras: Fabiola Aquino e Renata Almeida" },
+      { "type": "list", "ordered": false, "items": [
+        "Currículo extenso no audiovisual, hoje trabalham juntas produzindo essa obra.",
+        "Dá uma olhada na [Oba Cacauê Produções](https://obacacaue.com.br/)"
+      ] },
+      { "type": "heading", "level": 3, "text": "Sonoplasta: Kafé" },
+      { "type": "list", "ordered": false, "items": [
+        "Sim, o próprio Kafé!",
+        "Músico soteropolitano que já produziu sons poderosos, tanto independentes quanto com nomes grandes da nossa terra.",
+        "Dá uma conferida nas músicas dele, talvez você já conheça alguma sem saber. [Venha Devagar](https://www.youtube.com/watch?v=j_DAMrDUYiU)"
+      ] },
+      { "type": "heading", "level": 3, "text": "Game Designer: Pedro Henrique" },
+      { "type": "list", "ordered": false, "items": [
+        "Sócio da **Akyoma**, listada pelo Gamepolitan como uma das principais empresas do ramo no estado da Bahia.",
+        "Quer dar uma olhada na lista? segue o link [Gamepolitan](https://gamepolitan.com.br/2026/07/22/produtores-de-jogos-na-bahia/)"
+      ] },
+      { "type": "heading", "level": 3, "text": "Desenvolvedores: Felipe Cerqueira (eu) e Rodrigo Almeida" },
+      { "type": "list", "ordered": false, "items": [
+        "Rodrigo já tem experiência em game dev e participou de um projeto infantil lançado por um influencer brasileiro.",
+        "Eu, Felipe, venho da área de software (APIs, sites, etc.) e como dev de jogos já participei de várias **TriJam** (3h pra criar um jogo completo!). Confere lá no [Itch.io.](https://trijam.itch.io/)"
+      ] },
+      { "type": "paragraph", "text": "Ufa! Equipe topzeira demais, né?" },
+      { "type": "paragraph", "text": "Agora vai lá e se inscreve na nossa central de notificações. Só vem ouro!" }
+    ]
+  },
+  "devlog": [
+    {
+      "date": "30 de Julho, 2026",
+      "title": "O primeiro DEVLOG",
+      "description": [
+        { "subtitle": "", "text": "Pronto, daqui em diante, irei ser mais técnico e definir exatamente o que foi feito. Afinal, esse é o devlog do nosso projeto. Se saber os detalhes do jogo não é do seu interesse, assine a nossa newsletter e lá terá a informação de forma resumida." },
+        { "subtitle": "Módulo de batalha - Movimentação do Personagem", "text": "Foi acrescentada a movimentação básica do personagem jogável. Ela é compatível com as principais formas de controle disponíveis no mercado. Junto com a mecânica básica de movimentação, foram implementadas as regras de limitação de movimento, consumo de stamina por movimento e delimitação de regiões. Agora, permanecer no campo inimigo drena stamina e reduz a velocidade." },
+        { "subtitle": "Módulo de batalha - Movimentação do inimigo", "text": "Foi acrescentada a movimentação básica do personagem inimigo. Ela é reativa e espera que o jogador faça alguma movimentação para que ela ocorra. Atualmente, a movimentação básica do personagem Gruwde força ele a ficar alinhado com o personagem Kairu no eixo Z. Com a movimentação do personagem, foi elaborado também o conceito básico do combate, que define se o personagem pode ou não atacar." },
+        { "subtitle": "Módulo de batalha - Ataque básico do inimigo e do player", "text": "Com a movimentação definida, o próximo passo foi a implementação da lógica de ataque. Definimos que a melhor abordagem para ambos os ataques seriam projéteis com velocidades diferentes. Assim, conseguiríamos criar um padrão de comportamento e evitar duplicação de código, apenas definindo novos valores de controle para as propriedades dos projéteis." },
+        { "subtitle": "Módulo de batalha - Interfaces", "text": "Definimos quais seriam os conceitos básicos e formatos das principais interfaces que teríamos nos combates e, assim, implementamos as suas características. Apesar de não termos trabalhado nas mecânicas e funcionalidades oficiais, conseguimos implementar as funcionalidades parciais para que as interfaces funcionassem em harmonia com o produto final do jogo." },
+        { "subtitle": "Módulo de batalha - Animações", "text": "Com as diretrizes e os principais comportamentos definidos, nossa equipe de arte definiu e desenvolveu as principais esquivas para o Kairu e para o Gruwde. Essas esquivas definem o projeto e dão um gosto de como poderá ser a abordagem final desses personagens no jogo." }
+      ]
+    },
+    {
+      "date": "10 de Julho, 2026",
+      "title": "O início do projeto.",
+      "description": [
+        { "subtitle": "", "text": "Ufa! Começamos. É isso, galera, é oficial: a produção do jogo está online. Como maior prova disso, decidimos dar uma acelerada no nosso cronograma e apresentar as primeiras características do projeto. A primeira versão do módulo básico de batalha foi iniciada; ela ainda está crua e sem a aplicação da maioria das mecânicas que definem a originalidade do projeto. Mas quer saber? Tivemos 21 dias de desenvolvimento. Superamos e muito as nossas expectativas." }
+      ]
+    },
+    {
+      "date": "Março, 2026",
+      "title": "O planejamento.",
+      "description": [
+        { "subtitle": "", "text": "Bom, já tínhamos a aprovação do projeto. Agora o que faltava era só as definições e o planejamento. O edital já confirmava pra gente que o período de produção oficialmente iria iniciar em julho. Todo esse tempo de ócio, de março até julho, iríamos precisar preencher com algo. Não poderíamos deixar o nosso ânimo baixar. Começamos então a produção da nossa minuciosa etapa de planejamento e pré-produção." },
+        { "subtitle": "", "text": "Criamos inúmeros documentos, validamos e pensamos em mecânicas, cenários e história. Só o nosso GDD ficou como um documento de mais de 150 páginas. Definimos tudo lá, tudo bem documentadinho. Todas as mecânicas, todas as possibilidades, todos os riscos, deveres, competências e itens essenciais. Foram longos períodos com reuniões de duas a três vezes por semana, com cada reunião durando entre 3 e 5 horas. Foi realmente muito trabalho para chegarmos até aqui. Apesar de ter sido muito trabalho, não trabalhávamos com implementação real, apenas trabalhamos com a teoria por trás da implementação. Um real planejamento dos nossos passos." }
+      ]
+    },
+    {
+      "date": "Novembro, 2025",
+      "title": "A validação que precisávamos.",
+      "description": [
+        { "subtitle": "", "text": "Em novembro de 2025, depois de muito trabalho e de muita conversa, tivemos os nossos pontos de vista alinhados e recebemos duas notificações que poderiam comprovar o sucesso da nossa ideia ou simplesmente nos mostrar que ela ainda precisava de mais tempo para ser amadurecida. Inscrevemos o nosso projeto em um edital. Matutamos sobre a nossa abordagem até que chegamos na consolidação final. Vamos solicitar financiamento para obter a nossa prova de conceito, o nosso MVP." },
+        { "subtitle": "", "text": "Foram longas semanas até a divulgação do nosso resultado. A cada dia que passava, ficávamos mais cautelosos; porém, como acreditamos no nosso produto, não ficamos com receio, apenas com ansiedade sobre o resultado. O resultado chegou. APROVADO! Ficamos em 4º colocado. Era essa a consolidação que precisávamos. Agora era certo, hora de produzir." }
+      ]
+    },
+    {
+      "date": "Julho de 2025",
+      "title": "Primeiros contatos",
+      "description": [
+        { "subtitle": "", "text": "Apesar de a ideia ter começado a surgir na mente de Darwiz Bagdeve muito antes, foi só em julho de 2025 que ele e Felipe Cerqueira (Himura) se conheceram e começaram a conversar sobre a viabilidade do projeto. Com o tempo, o projeto foi ganhando força, a ideia foi se materializando e os primeiros rabiscos foram traçados." },
+        { "subtitle": "", "text": "Depois de muita conversa, a equipe foi crescendo e, com a chegada de Atmo Cubo ao projeto, a porta de entrada para a Akyoma foi aberta. Começamos a conversar e vimos que o projeto estava ganhando uma força sem precedentes. Depois de muita conversa, de muito planejamento e alinhamento, conseguimos finalmente visualizar. Era hora de tirar as promessas do ar e consolidá-las num papel." }
+      ]
+    }
+  ]
 }

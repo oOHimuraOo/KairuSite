@@ -9,11 +9,14 @@ const showIntro = ref(true);
 const introStorageKey = 'kairu-site-intro-last-shown';
 const settingsStorageKey = 'kairu-site-settings';
 
+// ===== CONFIGURAÇÕES DE ACESSIBILIDADE =====
 const theme = ref<'dark' | 'light'>('dark');
 const fontSize = ref<'normal' | 'large' | 'xlarge'>('normal');
 const readerMode = ref<'normal' | 'soft'>('normal');
 const blindMode = ref(false);
+const hideContent = ref(false); // NOVO: controla visibilidade do WindowContent
 
+// ===== DADOS DO SITE =====
 const siteData = ref<any>(null);
 const loading = ref(true);
 
@@ -21,6 +24,7 @@ const isSpeechSupported = typeof window !== 'undefined' && 'speechSynthesis' in 
 
 let hoverSpeechTimeout: ReturnType<typeof setTimeout> | null = null;
 
+// ===== FUNÇÕES DE LEITURA DINÂMICA =====
 const speakAlt = (event: MouseEvent) => {
   if (!blindMode.value) return;
   const target = event.target as HTMLElement;
@@ -64,6 +68,7 @@ const stopSpeech = () => {
   if (isSpeechSupported) speechSynthesis.cancel();
 };
 
+// ===== APLICAÇÃO DE CONFIGURAÇÕES =====
 const applySettings = () => {
   const root = document.documentElement;
   root.dataset.theme = theme.value;
@@ -81,6 +86,7 @@ const saveSettings = () => {
         fontSize: fontSize.value,
         readerMode: readerMode.value,
         blindMode: blindMode.value,
+        hideContent: hideContent.value, // também salva o estado do conteúdo
       }),
     );
   } catch {
@@ -96,10 +102,12 @@ const loadSettings = () => {
     fontSize.value = ['normal', 'large', 'xlarge'].includes(parsed.fontSize) ? parsed.fontSize : 'normal';
     readerMode.value = ['normal', 'soft'].includes(parsed.readerMode) ? parsed.readerMode : 'normal';
     blindMode.value = parsed.blindMode === true;
+    hideContent.value = parsed.hideContent === true; // carrega o estado salvo
   } catch {
   }
 };
 
+// ===== TOGGLES =====
 const toggleTheme = () => { theme.value = theme.value === 'dark' ? 'light' : 'dark'; };
 const toggleFontSize = () => {
   fontSize.value =
@@ -111,11 +119,15 @@ const toggleReaderMode = () => {
 const toggleBlindMode = () => {
   blindMode.value = !blindMode.value;
 };
+const toggleContentVisibility = () => {
+  hideContent.value = !hideContent.value;
+};
 
 const hideIntro = () => {
   showIntro.value = false;
 };
 
+// ===== MOUNT =====
 onMounted(async () => {
   try {
     const res = await fetch('/site-data.json');
@@ -156,7 +168,7 @@ onBeforeUnmount(() => {
   stopSpeech();
 });
 
-watch([theme, fontSize, readerMode, blindMode], () => {
+watch([theme, fontSize, readerMode, blindMode, hideContent], () => {
   applySettings();
   saveSettings();
 });
@@ -184,20 +196,28 @@ watch(blindMode, (val) => {
 
   <transition name="fade" appear>
     <div v-if="!showIntro && !loading && siteData" class="app-container">
+      <!-- RÉGUA DE ACESSIBILIDADE (agora com botão de toggle do conteúdo) -->
       <ReguaAcessibilidade
         :theme="theme"
         :font-size="fontSize"
         :reader-mode="readerMode"
         :blind-mode="blindMode"
+        :hide-content="hideContent"
         @toggle-theme="toggleTheme"
         @toggle-font="toggleFontSize"
         @toggle-reader="toggleReaderMode"
         @toggle-blind="toggleBlindMode"
+        @toggle-content="toggleContentVisibility"
       />
+      <!-- CARROSSEL -->
       <CarroselBg :slides="siteData.carousel" />
+      <!-- JANELA DE CONTEÚDO (controlada por v-if) -->
       <WindowContent 
+        v-if="!hideContent"
         :cadastro="siteData.cadastro" 
-        :devlog="siteData.devlog" 
+        :devlog="siteData.devlog"
+        :sobreJogo="siteData.sobreJogo"
+        :sobreEquipe="siteData.sobreEquipe"
       />
     </div>
     <div v-else-if="!showIntro && !siteData && !loading" class="error-message">
