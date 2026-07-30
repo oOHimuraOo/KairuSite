@@ -1,5 +1,32 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { insertMailSubscription } from '../supabase';
+
+const localStorageKey = 'kairu-subscribed-emails';
+
+const getStoredEmails = () => {
+  try {
+    const raw = localStorage.getItem(localStorageKey);
+    if (!raw) return [] as string[];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [] as string[];
+  }
+};
+
+const saveStoredEmail = (email: string) => {
+  const normalized = email.trim().toLowerCase();
+  const current = getStoredEmails();
+  if (current.includes(normalized)) return;
+  const updated = [...current, normalized];
+  localStorage.setItem(localStorageKey, JSON.stringify(updated));
+};
+
+const isEmailAlreadyStored = (email: string) => {
+  const normalized = email.trim().toLowerCase();
+  return getStoredEmails().includes(normalized);
+};
 
 const props = defineProps<{
   cadastro: { title: string; paragraphs: string[] };
@@ -8,6 +35,26 @@ const props = defineProps<{
 
 const activeTab = ref('cadastro');
 const isMobile = ref(window.innerWidth <= 768);
+const email = ref('');
+const isSubmitting = ref(false);
+const feedbackMessage = ref('');
+const feedbackType = ref<'success' | 'error' | 'idle'>('idle');
+const feedbackTimer = ref<number | null>(null);
+
+const clearFeedback = () => {
+  if (feedbackTimer.value) {
+    window.clearTimeout(feedbackTimer.value);
+  }
+  feedbackTimer.value = window.setTimeout(() => {
+    feedbackMessage.value = '';
+    feedbackType.value = 'idle';
+  }, 4000);
+};
+
+const isEmailValid = (value: string) => {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return pattern.test(value);
+};
 
 const updateMobile = () => {
   isMobile.value = window.innerWidth <= 768;
@@ -15,8 +62,43 @@ const updateMobile = () => {
 
 window.addEventListener('resize', updateMobile);
 
-const submitNewsletter = () => {
-  window.alert('Inscrição realizada com sucesso!');
+const submitNewsletter = async () => {
+  const trimmedEmail = email.value.trim();
+
+  if (!trimmedEmail || !isEmailValid(trimmedEmail)) {
+    feedbackMessage.value = 'Informe um e-mail válido no formato exemplo@dominio.com.';
+    feedbackType.value = 'error';
+    clearFeedback();
+    return;
+  }
+
+  if (isEmailAlreadyStored(trimmedEmail)) {
+    saveStoredEmail(trimmedEmail);
+    feedbackMessage.value = 'Já possuímos seu e-mail em nosso sistema.';
+    feedbackType.value = 'error';
+    clearFeedback();
+    return;
+  }
+
+  isSubmitting.value = true;
+  feedbackMessage.value = '';
+  feedbackType.value = 'idle';
+
+  try {
+    await insertMailSubscription(trimmedEmail);
+    saveStoredEmail(trimmedEmail);
+    email.value = '';
+    feedbackMessage.value = 'E-mail cadastrado com sucesso!';
+    feedbackType.value = 'success';
+  } catch (error) {
+    saveStoredEmail(trimmedEmail);
+    const message = error instanceof Error ? error.message : 'Não foi possível concluir o cadastro no momento.';
+    feedbackMessage.value = message;
+    feedbackType.value = 'error';
+  } finally {
+    isSubmitting.value = false;
+    clearFeedback();
+  }
 };
 </script>
 
@@ -51,14 +133,21 @@ const submitNewsletter = () => {
       </div>
       <form class="newsletter-form w-100" @submit.prevent="submitNewsletter">
         <input
+          v-model="email"
           type="email"
           class="newsletter-input w-100"
           placeholder="Seu melhor e-mail..."
           required
           aria-label="Endereço de e-mail"
+          autocomplete="email"
         />
-        <button type="submit" class="submit-btn">Inscrever</button>
+        <button type="submit" class="submit-btn" :disabled="isSubmitting || !isEmailValid(email)">
+          {{ isSubmitting ? 'Enviando...' : 'Inscrever' }}
+        </button>
       </form>
+      <p v-if="feedbackMessage" class="feedback-message" :class="feedbackType">
+        {{ feedbackMessage }}
+      </p>
     </div>
 
     <div v-show="activeTab === 'devlog'" class="tab-content active" role="tabpanel">
@@ -77,14 +166,21 @@ const submitNewsletter = () => {
       <p v-for="(p, idx) in cadastro.paragraphs" :key="idx">{{ p }}</p>
       <form class="newsletter-form" @submit.prevent="submitNewsletter">
         <input
+          v-model="email"
           type="email"
           class="newsletter-input"
           placeholder="Seu melhor e-mail..."
           required
           aria-label="Endereço de e-mail"
+          autocomplete="email"
         />
-        <button type="submit" class="submit-btn">Inscrever</button>
+        <button type="submit" class="submit-btn" :disabled="isSubmitting || !isEmailValid(email)">
+          {{ isSubmitting ? 'Enviando...' : 'Inscrever' }}
+        </button>
       </form>
+      <p v-if="feedbackMessage" class="feedback-message" :class="feedbackType">
+        {{ feedbackMessage }}
+      </p>
     </section>
 
     <section class="mobile-section" id="devlog">
@@ -231,8 +327,27 @@ const submitNewsletter = () => {
   cursor: pointer;
   transition: background var(--transition-speed);
 
-  &:hover {
+  &:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  &:hover:not(:disabled) {
     background: var(--primary-hover);
+  }
+}
+
+.feedback-message {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  &.success {
+    color: #16a34a;
+  }
+
+  &.error {
+    color: #dc2626;
   }
 }
 
@@ -317,7 +432,12 @@ p {
     transition: background var(--transition-speed);
     width: 100%;
     
-    &:hover {
+    &:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+    
+    &:hover:not(:disabled) {
       background: var(--primary-hover);
     }
   }
