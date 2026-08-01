@@ -1,11 +1,11 @@
 {
   "carousel": [
+    { "src": "/assets/imgs/KAIRUITAPARICA.png", "alt": "Ilustração promocional de Kairu Edé feita por Darwiz Bagdeve para um evento realizado em Itaparica" },
     { "src": "/assets/imgs/LacerdaCompleto.png", "alt": "Ilustração do elevador Lacerda em Soteropolis. A cidade distopica onde se passa a historia de Kairu-Edé: batalha astral." },
     { "src": "/assets/imgs/AJOGUNSMARIOW.png", "alt": "Ilustração de um Ajogun feita por Darwiz Bagdeve" },
     { "src": "/assets/imgs/ARTE.png", "alt": "Ilustração feita por Darwiz Bagdeve" },
     { "src": "/assets/imgs/ARTE3.png", "alt": "Ilustração feita por Darwiz Bagdeve" },
     { "src": "/assets/imgs/CULTURAMAAGOSTO.png", "alt": "Ilustração promocional de Kairu Edé feita por Darwiz Bagdeve para o evento Culturama de Agosto" },
-    { "src": "/assets/imgs/KAIRUITAPARICA.png", "alt": "Ilustração promocional de Kairu Edé feita por Darwiz Bagdeve para um evento realizado em Itaparica" },
     { "src": "/assets/imgs/REF_KairuLocciLocci2.png", "alt": "Ilustração feita por Darwiz Bagdeve" }
   ],
   "cadastro": {
